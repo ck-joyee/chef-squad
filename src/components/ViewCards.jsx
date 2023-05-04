@@ -41,4 +41,4 @@ const {recipe_name,ingredients,image,cooking_method,rating,_id } = categorychef;
   )
 }
 
-export default ViewCards
+export default ViewCards;

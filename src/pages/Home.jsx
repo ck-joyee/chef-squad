@@ -1,13 +1,18 @@
-import React from 'react'
+import React ,{Suspense,lazy} from 'react'
 import Banner from '../components/Banner'
-import CardC from '../components/CardC'
-
+import Gallery from '../components/Gallery'
+import Services from '../components/Services'
+ const ChefCards = lazy(() =>import('../components/ChefCards'))
 
 function Home() {
   return (
     <div>
         <Banner></Banner>
-        <CardC></CardC>
+        <Gallery></Gallery>
+        <Suspense fallback={<div>please wait ....</div>}>
+        <ChefCards></ChefCards>
+        </Suspense>
+        <Services></Services>
     </div>
   )
 }

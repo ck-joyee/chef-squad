@@ -5,20 +5,30 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { FaGrinHearts } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-function CardC() {
+function ChefCards() {
+
+  const [disabled, setDisabled] = useState(false);
+
+  const handleClick = () => {
+    setDisabled(true);
+  };
+
+
+
+
     const [categories, setCategories] =useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/categories')
+        fetch('https://web-assignment10-ck-joyee.vercel.app/categories')
         .then(res=>res.json())
         .then(data=>setCategories(data))
         .catch(error =>console.error(error))
     },[])
   return (
     <div className='mt-3 mb-4'>
-        {/* <div className='mt-4 mx-auto'>Chinese Chef</div> */}
     {
-    
-        <Container>
+      
+      <Container>
+          <h1 className='mt-4 mx-auto mb-4'>Chinese Chef</h1>
     <Row xs={1} md={2} className="g-4">
       {categories.map((categorie) => (
     <Col key={categorie.id}>
@@ -34,7 +44,11 @@ function CardC() {
           </Card.Text>
         <Link to={`/category/${categorie.id}`}>
         <Button variant="outline-primary">View Recipes</Button>
+        
         </Link>
+        <Button variant="primary" className='ms-3' onClick={handleClick} disabled={disabled}>
+      {disabled ? 'Favourite' : 'Favourite'}
+    </Button>
         </Card.Body>
         
       </Card>
@@ -49,4 +63,4 @@ function CardC() {
   )
 }
 
-export default CardC
+export default ChefCards

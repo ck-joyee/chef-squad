@@ -7,7 +7,7 @@ import ViewCards from './ViewCards';
 function Categories() {
     const categorychefs = useLoaderData();
     return (
-      <div><h3 >Totle Recips : {categorychefs.length}</h3>
+      <div><h3 >Total Recipes : {categorychefs.length}</h3>
       {
         categorychefs.map(categorychef => <ViewCards 
         key={categorychef._id}
